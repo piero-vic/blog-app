@@ -1,9 +1,9 @@
 class Post < ApplicationRecord
-  belongs_to :user
+  belongs_to :author, class_name: 'User'
   has_many :comments
   has_many :likes
 
-  after_save :update_user_posts_counter
+  after_save :update_author_posts_counter
 
   def recent_comments
     comments.order(created_at: :desc).limit(5)
@@ -11,7 +11,7 @@ class Post < ApplicationRecord
 
   private
 
-  def update_user_posts_counter
-    user.update(posts_counter: user.posts.length)
+  def update_author_posts_counter
+    author.update(posts_counter: author.posts.length)
   end
 end
