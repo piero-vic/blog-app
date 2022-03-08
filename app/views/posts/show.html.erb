@@ -1,4 +1,15 @@
 <h1>Posts#show</h1>
 <p>Find me in app/views/posts/show.html.erb</p>
-<p>User ID: <%= @user_id %></p>
-<p>Post ID: <%= @post_id %></p>
+<article>
+  <div>
+    <h1><%= @post.title %></h1>
+    <p><%= "Comments: #{@post.comments_counter || 0}, Likes: #{@post.likes_counter || 0 }" %></p>
+  </div>
+  <p><%= @post.text %></p>
+</article>
+
+<div>
+  <% @post.comments.each do |comment| %>
+    <p><%= "#{comment.author.name}: #{comment.text}" %></p>
+  <% end %>
+</div>

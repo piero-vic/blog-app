@@ -1,3 +1,26 @@
 <h1>Posts#index</h1>
 <p>Find me in app/views/posts/index.html.erb</p>
-<p>User ID: <%= @user_id %></p>
+<div>
+  <%= image_tag(@user.photo, :alt => "#{@user.name} Photo") %>
+  <div>
+    <p><%= @user.name %></p>
+    <p><%= @user.posts_counter %></p>
+  </div>
+</div>
+
+<ul>
+  <% @user.posts.each do |post| %>
+    <li>
+      <a href=<%= "/users/#{@user.id}/posts/#{post.id}" %>>
+        <h3><%= post.title %></h3>
+        <p><%= post.text %></p>
+        <p><%= "Comments: #{post.comments_counter || 0}, Likes: #{post.likes_counter || 0 }" %></p>
+      </a>
+      <div>
+        <% post.recent_comments.each do |comment| %>
+          <p><%= "#{comment.author.name}: #{comment.text}" %></p>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+</ul>
