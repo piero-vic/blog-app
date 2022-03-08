@@ -1,3 +1,27 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
-<p>User ID: <%= @user_id %></p>
+<div>
+  <%= image_tag(@user.photo, :alt => "#{@user.name} Photo") %>
+  <div>
+    <p><%= @user.name %></p>
+    <p><%= @user.posts_counter %></p>
+  </div>
+</div>
+
+<div>
+  <h2>Bio</h2>
+  <p><%= @user.bio %></p>
+</div>
+
+<ul>
+  <% @user.recent_posts.each do |post| %>
+    <li>
+      <a href=<%= "/users/#{@user.id}/posts/#{post.id}" %>>
+        <h3><%= post.title %></h3>
+        <p><%= post.text %></p>
+      </a>
+    </li>
+  <% end %>
+</ul>
+
+<a href=<%= "/users/#{@user.id}/posts" %>>See All Posts</a>
