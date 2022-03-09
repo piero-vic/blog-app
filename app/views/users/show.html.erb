@@ -1,3 +1,22 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<p>User ID: <%= @user_id %></p>
+<div class="flex flex-col gap-5">
+  <%= render partial: "shared/user_info", locals: { user: @user } %>
+
+  <div class="border p-3">
+    <h2 class="text-2xl">Bio</h2>
+    <p class="mt-2"><%= @user.bio %></p>
+  </div>
+
+  <ul class="flex flex-col gap-5 my-5">
+    <% @user.recent_posts.each do |post| %>
+      <li>
+        <a href=<%= "/users/#{@user.id}/posts/#{post.id}" %> class="block border p-3 flex flex-col gap-2">
+          <h3 class="text-xl"><%= post.title %></h3>
+          <p><%= post.text %></p>
+          <p class="text-sm self-end"><%= "Comments: #{post.comments_counter || 0}, Likes: #{post.likes_counter || 0 }" %></p>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+
+  <a class="self-center p-3 border rounded-xl" href=<%= "/users/#{@user.id}/posts" %>>See All Posts</a>
+</div>

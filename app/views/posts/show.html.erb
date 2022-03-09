@@ -1,4 +1,13 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
-<p>User ID: <%= @user_id %></p>
-<p>Post ID: <%= @post_id %></p>
+<article class="border p-3 gap-3">
+  <div class="flex flex-col justify-between">
+    <h1 class="text-2xl"><%= @post.title %></h1>
+    <p class="self-end"><%= "Comments: #{@post.comments_counter || 0}, Likes: #{@post.likes_counter || 0 }" %></p>
+  </div>
+  <p><%= @post.text %></p>
+</article>
+
+<div class="flex flex-col border p-3 gap-2">
+  <% @post.comments.each do |comment| %>
+    <p><%= "#{comment.author.name}: #{comment.text}" %></p>
+  <% end %>
+</div>
