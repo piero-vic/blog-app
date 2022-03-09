@@ -2,8 +2,7 @@
 
 # Blog App
 
-> Blog website made with Ruby on Rails.
-
+> A simple blog application for users to post content online.
 
 ## Built With
 
