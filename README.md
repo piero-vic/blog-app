@@ -8,6 +8,7 @@
 ## Built With
 
 - Ruby on Rails
+- TailwindCSS
 
 ## Getting Started
 
@@ -29,6 +30,21 @@ Run the following command to install all the dependencies.
 
 ```sh
 bundler install
+```
+
+### Populate database
+
+```
+rails db:create db:migrate db:seed
+```
+
+### Setup TailwindCSS
+
+This project is styled with TailwindCSS. Run the following command to start the
+build process.
+
+```
+./bin/dev
 ```
 
 ### Usage
