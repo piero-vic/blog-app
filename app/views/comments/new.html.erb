@@ -1,0 +1,10 @@
+<%= form_with model: @comment, url: user_post_comments_path do |f| %>
+  <div class="border p-3 flex flex-col gap-3">
+    <h1 class="text-3xl">Create a new comment</h1>
+    <div>
+      <%= f.label :text, "Comment", class: "sr-only" %>
+      <%= f.text_area :text, required: true, class: "w-full p-2 border" %>
+    </div>
+    <%= f.submit "Post Comment", class: "self-center py-2 px-3 border rounded-xl" %>
+  </div>
+<% end %>
