@@ -8,4 +8,24 @@ class PostsController < ApplicationController
     @post_id = params[:id]
     @post = Post.find(params[:id])
   end
+
+  def new
+    @post = Post.new
+  end
+
+  def create
+    @current_user = current_user
+    post = Post.new(post_params.merge(author_id: @current_user.id))
+    if post.save
+      redirect_to user_path(@current_user.id), success: 'Post published'
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :text)
+  end
 end

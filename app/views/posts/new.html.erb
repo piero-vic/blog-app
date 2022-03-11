@@ -1,0 +1,14 @@
+<%= form_with model: @post, url: user_posts_path do |f| %>
+  <div class="border p-3 flex flex-col gap-3">
+    <h1 class="text-3xl">Create a new post</h1>
+    <div>
+      <%= f.label :title, "Title" %>
+      <%= f.text_field :title, required: true, class: "w-full p-2 border" %>
+    </div>
+    <div>
+      <%= f.label :text, "Body" %>
+      <%= f.text_area :text, required: true, class: "w-full p-2 border" %>
+    </div>
+    <%= f.submit "Publish", class: "self-center py-2 px-3 border rounded-xl" %>
+  </div>
+<% end %>
