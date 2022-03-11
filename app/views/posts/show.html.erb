@@ -16,6 +16,10 @@
 </div>
 
 <div class="flex border p-3 gap-2 mt-3">
+  <%= button_to user_post_likes_path(@user_id, @post_id), method: :post, class: "self-center py-2 px-3 border rounded-xl" do %>
+    Like
+  <% end %>
+
   <%= link_to new_user_post_comment_path(@user_id, @post_id), class: "self-center py-2 px-3 border rounded-xl" do %>
     Post a comment
   <% end %>
