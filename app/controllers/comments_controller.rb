@@ -9,10 +9,11 @@ class CommentsController < ApplicationController
     @user_id = params[:user_id]
     @post_id = params[:post_id]
     comment = Comment.new(comment_params.merge(author_id: @current_user.id, post_id: @post_id))
-    if comment.save
+    if comment.valid?
+      comment.save
       redirect_to user_post_path(@user_id, @post_id), success: 'Comment published'
     else
-      render :new
+      redirect_to new_user_post_comment_path(@current_user.id), alert: post.errors.full_messages
     end
   end
 

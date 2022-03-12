@@ -2,7 +2,7 @@
   <%= render partial: "shared/user_info", locals: { user: @user } %>
 
   <ul class="flex flex-col gap-5 my-5">
-    <% @user.posts.each do |post| %>
+    <% @posts.each do |post| %>
       <li>
         <a href=<%= "/users/#{@user.id}/posts/#{post.id}" %> class="block border p-3 flex flex-col gap-2">
           <h3 class="text-xl"><%= post.title %></h3>

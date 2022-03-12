@@ -15,6 +15,12 @@
   </div>
 </div>
 
+<% flash.each do |type, msg| %>
+  <div class="p-3 mt-3 border rounded-xl bg-red-300">
+    <%= type.capitalize %>: <%= msg %>
+  </div>
+<% end %>
+
 <div class="flex border p-3 gap-2 mt-3">
   <%= button_to user_post_likes_path(@user_id, @post_id), method: :post, class: "self-center py-2 px-3 border rounded-xl" do %>
     Like

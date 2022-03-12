@@ -1,3 +1,10 @@
+<% flash.each do |type, msg| %>
+  <div class="p-3 my-3 border rounded-xl bg-red-300 gap-3">
+    <h2 class="font-bold"><%= type.to_upper %></h2>
+    <p><%= msg %></p>
+  </div>
+<% end %>
+
 <%= form_with model: @comment, url: user_post_comments_path do |f| %>
   <div class="border p-3 flex flex-col gap-3">
     <h1 class="text-3xl">Create a new comment</h1>

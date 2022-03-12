@@ -57,7 +57,8 @@ rails s
 ### Run tests
 
 ```sh
-bundle exec rspec
+bundle exec rspec               # Run all the tests
+bundle exec rspec spec/models   # Run tests for models
 ```
 
 ## Author
