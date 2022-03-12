@@ -1,13 +1,22 @@
+<% flash.each do |type, msg| %>
+  <div class="p-3 my-3 border rounded-xl bg-red-300 gap-3">
+    <h2 class="font-bold"><%= type.to_upper %></h2>
+    <% msg.each do |message| %>
+      <p><%= message %></p>
+    <% end %>
+  </div>
+<% end %>
+
 <%= form_with model: @post, url: user_posts_path do |f| %>
   <div class="border p-3 flex flex-col gap-3">
     <h1 class="text-3xl">Create a new post</h1>
     <div>
       <%= f.label :title, "Title" %>
-      <%= f.text_field :title, required: true, class: "w-full p-2 border" %>
+      <%= f.text_field :title, class: "w-full p-2 border" %>
     </div>
     <div>
       <%= f.label :text, "Body" %>
-      <%= f.text_area :text, required: true, class: "w-full p-2 border" %>
+      <%= f.text_area :text, class: "w-full p-2 border" %>
     </div>
     <%= f.submit "Publish", class: "self-center py-2 px-3 border rounded-xl" %>
   </div>
