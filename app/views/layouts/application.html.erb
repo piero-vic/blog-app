@@ -18,9 +18,12 @@
           Blog App
         <% end %>
         <% if user_signed_in? %>
-          <nav class="flex items-center	">
+          <nav class="flex items-center gap-3">
             <%= link_to new_user_post_path(@current_user.id), class: "" do %>
               New Post
+            <% end %>
+            <%= button_to destroy_user_session_path, method: :delete, class: "" do %>
+              Log Out
             <% end %>
           </nav>
         <% end %>
