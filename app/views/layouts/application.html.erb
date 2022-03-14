@@ -17,14 +17,18 @@
         <%= link_to root_path, class: "text-3xl" do %>
           Blog App
         <% end %>
-        <nav class="flex items-center	">
-          <%= link_to new_user_post_path(@current_user.id), class: "" do %>
-            New Post
-          <% end %>
-        </nav>
+        <% if user_signed_in? %>
+          <nav class="flex items-center	">
+            <%= link_to new_user_post_path(@current_user.id), class: "" do %>
+              New Post
+            <% end %>
+          </nav>
+        <% end %>
       </div>
     </header>
     <main class="mx-auto max-w-screen-md my-28 px-5 flex flex-col">
+     <p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p>
       <%= yield %>
     </main>
   </body>
