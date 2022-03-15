@@ -19,19 +19,20 @@
         <% end %>
         <% if user_signed_in? %>
           <nav class="flex items-center gap-3">
-            <%= link_to new_user_post_path(@current_user.id), class: "" do %>
-              New Post
-            <% end %>
-            <%= button_to destroy_user_session_path, method: :delete, class: "" do %>
-              Log Out
-            <% end %>
+            <%= link_to "New Post", new_user_post_path(@current_user.id) %>
+            <%= link_to "Profile", edit_user_registration_path %>
+            <%= button_to "Log Out", destroy_user_session_path, method: :delete %>
           </nav>
         <% end %>
       </div>
     </header>
-    <main class="mx-auto max-w-screen-md my-28 px-5 flex flex-col">
-     <p class="notice"><%= notice %></p>
-     <p class="alert"><%= alert %></p>
+    <main class="mx-auto max-w-screen-md my-28 px-5 flex flex-col gap-5">
+      <% if notice %>
+        <p class="notice px-5 py-3 border rounded-xl bg-green-100"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert px-5 py-3 border rounded-xl bg-red-100"><%= alert %></p>
+      <% end %>
       <%= yield %>
     </main>
   </body>
