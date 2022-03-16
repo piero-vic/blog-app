@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Login page', type: :system do
+RSpec.describe 'User index page', type: :system do
   before do
     User.create(id: 1, name: 'Qwerty', email: 'qwerty@qwerty.com',
                 photo: 'https://randomuser.me/api/portraits/men/75.jpg',
