@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  before { User.create(id: 1, name: 'User 1', posts_counter: 0) }
+  before do
+    User.create(id: 1, name: 'Test', email: 'test@example.com', password: 'password123',
+                password_confirmation: 'password123', posts_counter: 0)
+  end
 
   subject do
     Post.new(author_id: 1, title: 'Hello 1', text: 'This is my first post', comments_counter: 0, likes_counter: 0)
