@@ -17,13 +17,16 @@
         <%= link_to root_path, class: "text-3xl" do %>
           Blog App
         <% end %>
-        <% if user_signed_in? %>
-          <nav class="flex items-center gap-3">
+        <nav class="flex items-center gap-3">
+          <% if user_signed_in? %>
             <%= link_to "New Post", new_user_post_path(@current_user.id) %>
             <%= link_to "Profile", edit_user_registration_path %>
             <%= button_to "Log Out", destroy_user_session_path, method: :delete %>
-          </nav>
-        <% end %>
+          <% else %>
+            <%= link_to "Log in", new_user_session_path %>
+            <%= link_to "Sign up", new_user_registration_path %>
+          <% end %>
+        </nav>
       </div>
     </header>
     <main class="mx-auto max-w-screen-md my-28 px-5 flex flex-col gap-5">
