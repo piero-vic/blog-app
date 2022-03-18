@@ -6,18 +6,13 @@ class Api::CommentsController < ApplicationController
     if comment.valid?
       comment.save
       respond_to do |format|
-        msg = { :status => "ok", :message => "Success!" }
-        format.json  { render :json => msg } # don't do msg.to_json
+        msg = { status: 'ok', message: 'Success!' }
+        format.json { render json: msg } # don't do msg.to_json
       end
-      # render json: {
-      #   messages: 'Comment created successfully',
-      #   is_success: true,
-      #   data: {comment: comment}
-      # }, status: 'ok'
     else
       respond_to do |format|
-        msg = { :status => "fail", :message => "Failed!" }
-        format.json  { render :json => msg } # don't do msg.to_json
+        msg = { status: 'fail', message: 'Failed!' }
+        format.json { render json: msg } # don't do msg.to_json
       end
     end
   end
