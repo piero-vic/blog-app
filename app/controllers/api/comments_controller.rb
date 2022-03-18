@@ -5,15 +5,20 @@ class Api::CommentsController < ApplicationController
     comment = Comment.new(text: comment_params[:text], author_id: @current_user.id, post_id: @post_id)
     if comment.valid?
       comment.save
-      render json: {
-        messages: 'Comment created successfully',
-        is_success: true
-      }, status: ok
+      respond_to do |format|
+        msg = { :status => "ok", :message => "Success!" }
+        format.json  { render :json => msg } # don't do msg.to_json
+      end
+      # render json: {
+      #   messages: 'Comment created successfully',
+      #   is_success: true,
+      #   data: {comment: comment}
+      # }, status: 'ok'
     else
-      render json: {
-        messages: 'Error',
-        is_success: false
-      }, status: failure
+      respond_to do |format|
+        msg = { :status => "fail", :message => "Failed!" }
+        format.json  { render :json => msg } # don't do msg.to_json
+      end
     end
   end
 
