@@ -14,6 +14,7 @@ Rails.application.routes.draw do
         resources :comments, only: [:index, :create]
       end
     end
+    post 'login', to: 'authentication#login'
   end
   # Defines the root path route ("/")
   root "users#index"
