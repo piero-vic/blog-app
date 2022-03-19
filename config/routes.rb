@@ -8,8 +8,10 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :api, default: {format: :json} do
-    resources :users, only: [:index, :show] do
+  namespace :api, defaults: { format: :json } do
+    post 'login', to: 'authentication#authenticate'
+    post 'register', to: 'users#create'
+    resources :users do
       resources :posts, only: [:index, :show, :create] do
         resources :comments, only: [:index, :create]
       end
