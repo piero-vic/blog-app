@@ -15,10 +15,10 @@ class AuthenticateUser
 
   # verify user credentials
   def user
-    user = User.find_by(email: email)
+    user = User.find_by(email:)
     return user if user&.valid_password?(password)
 
     # raise Authentication error if credentials are invalid
-    raise()
+    raise
   end
 end

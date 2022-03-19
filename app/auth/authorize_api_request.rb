@@ -6,7 +6,7 @@ class AuthorizeApiRequest
   # Service entry point - return valid user object
   def call
     {
-      user: user
+      user:
     }
   end
 
@@ -28,6 +28,5 @@ class AuthorizeApiRequest
   # check for token in `Authorization` header
   def http_auth_header
     return headers['Authorization'].split.last if headers['Authorization'].present?
-
   end
 end
