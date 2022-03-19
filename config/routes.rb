@@ -7,6 +7,16 @@ Rails.application.routes.draw do
       resources :likes, only: [:create]
     end
   end
+
+  namespace :api, defaults: { format: :json } do
+    post 'login', to: 'authentication#authenticate'
+    post 'register', to: 'users#create'
+    resources :users do
+      resources :posts, only: [:index, :show, :create] do
+        resources :comments, only: [:index, :create]
+      end
+    end
+  end
   # Defines the root path route ("/")
   root "users#index"
 end
