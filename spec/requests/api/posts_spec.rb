@@ -6,8 +6,8 @@ RSpec.describe 'api/posts', type: :request do
                 bio: 'Hello', password_confirmation: 'password123', posts_counter: 0)
   end
   path '/api/users/{user_id}/posts' do
-    # You'll want to customize the parameter types...
     parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
+
     get('list posts') do
       before do
         Post.create(id: 1, author_id: 1, title: 'Hello 1', text: 'This is my first post', comments_counter: 0,
@@ -38,33 +38,7 @@ RSpec.describe 'api/posts', type: :request do
     end
   end
 
-  # path '/api/users/{user_id}/posts' do
-  #   post('create post') do
-  #     parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
-  #     consumes 'application/json'
-  #     parameter name: :blog_post, in: :body, schema: {
-  #       type: :object,
-  #       properties: {
-  #             title: { type: :string },
-  #             text: { type: :string }
-  #       },
-  #       required: %w[title text]
-  #     }
-  #     response '200', 'Success!' do
-  #       let(:user_id) { '1' }
-  #       let(:blog_post) { {title: 'foo', text: 'bar'} }
-  #       run_test!
-
-  #       # do |response|
-  #       #   data = JSON.parse(response.body)
-  #       #   expect(data['message']).to eq('Success!')
-  #       # end
-  #     end
-  #   end
-  # end
-
   path '/api/users/{user_id}/posts/{id}' do
-    # You'll want to customize the parameter types...
     parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
